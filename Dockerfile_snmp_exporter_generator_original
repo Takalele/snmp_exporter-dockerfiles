@@ -6,10 +6,10 @@ RUN apt-get update && \
 WORKDIR "/src"
 RUN git clone https://github.com/prometheus/snmp_exporter.git
 WORKDIR "/src/snmp_exporter"
-RUN CGO_ENABLED=0 go mod tidy
-RUN CGO_ENABLED=0 go build
+RUN CGO_ENABLED=1 go mod tidy
+RUN CGO_ENABLED=1 go build
 WORKDIR "/src/snmp_exporter/generator"
-RUN CGO_ENABLED=0 go build
+RUN CGO_ENABLED=1 go build
 
 FROM golang:latest
 
